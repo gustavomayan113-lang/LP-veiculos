@@ -1,0 +1,167 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+/*
+ * LP Veículos design system: black, red and white.
+ * The site is dark by design (no theme toggle). All colors use oklch.
+ */
+
+@theme inline {
+  --font-display: "Barlow Condensed", "Arial Narrow", sans-serif;
+  --font-sans: "Barlow", system-ui, sans-serif;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-whatsapp: var(--whatsapp);
+  --color-whatsapp-foreground: var(--whatsapp-foreground);
+}
+
+:root {
+  --radius: 0.5rem;
+  --background: oklch(0.13 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.18 0.004 20);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.18 0.004 20);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.55 0.235 27);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.23 0.005 20);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.23 0.005 20);
+  --muted-foreground: oklch(0.72 0.01 20);
+  --accent: oklch(0.55 0.235 27);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.55 0.235 27);
+  --destructive-foreground: oklch(0.985 0 0);
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.55 0.235 27);
+  --whatsapp: oklch(0.62 0.17 150);
+  --whatsapp-foreground: oklch(0.13 0 0);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    line-height: 1;
+  }
+
+  section[id] {
+    scroll-margin-top: 4.5rem;
+  }
+}
+
+@utility btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: var(--radius);
+  padding: 0.8rem 1.4rem;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition:
+    background-color 0.2s,
+    transform 0.2s,
+    border-color 0.2s;
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+@utility btn-primary {
+  background-color: var(--color-primary);
+  color: var(--color-primary-foreground);
+  &:hover {
+    background-color: oklch(0.6 0.235 27);
+  }
+}
+
+@utility btn-outline {
+  border: 1.5px solid var(--color-foreground);
+  color: var(--color-foreground);
+  &:hover {
+    background-color: var(--color-foreground);
+    color: var(--color-background);
+  }
+}
+
+@utility btn-whatsapp {
+  background-color: var(--color-whatsapp);
+  color: var(--color-whatsapp-foreground);
+  &:hover {
+    filter: brightness(1.1);
+  }
+}
+
+@utility chip {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  padding: 0.35rem 1rem;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-muted-foreground);
+  transition: all 0.2s;
+  &:hover {
+    color: var(--color-foreground);
+    border-color: var(--color-foreground);
+  }
+}
+
+@utility stripe {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    var(--color-primary) 0 10px,
+    transparent 10px 20px
+  );
+}
